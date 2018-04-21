@@ -1,3 +1,4 @@
+require('seedrandom');
 exports = typeof window !== "undefined" && window !== null ? window : global;
 
 exports.Game = function() {
@@ -170,7 +171,32 @@ exports.Game = function() {
   };
 };
 
+var fs = require('fs');
+var util = require('util');
+var file='';
+var dir = 'fixtures/'
+// for (var i = 0; i <100; i++){
+  // file = "seed"+i+".log";
+
+exports.setSeedAndRun = function(seed){
+  Math.seedrandom(seed);
+
+
+
+// var log_file = fs.createWriteStream(dir + file, {flags : 'w'});
+// var log_stdout = process.stdout;
+
+// console.log = function(d) { //
+//   log_file.write(util.format(d) + '\n');
+//   log_stdout.write(util.format(d) + '\n');
+// };
+
+
+
+
+
 var notAWinner = false;
+
 
 var game = new Game();
 
@@ -179,6 +205,7 @@ game.add('Pat');
 game.add('Sue');
 
 do{
+
 
   game.roll(Math.floor(Math.random()*6) + 1);
 
@@ -189,3 +216,5 @@ do{
   }
 
 }while(notAWinner);
+
+}
